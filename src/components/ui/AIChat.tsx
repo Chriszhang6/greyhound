@@ -125,7 +125,7 @@ export const AIChat: React.FC = () => {
             <div className="bg-gray-900 text-white p-3 flex justify-between items-center">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                <h3 className="font-medium">Greyhound Assistant</h3>
+                <h3 className="font-medium text-white">Greyhound Assistant</h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
@@ -192,7 +192,7 @@ export const AIChat: React.FC = () => {
                 <div className="mb-4 text-left">
                   <div className="flex items-center text-xs text-gray-500 mb-1 ml-1">
                     <span className="w-2 h-2 bg-green-400 rounded-full mr-1"></span>
-                    <span className="font-medium">Greyhound Assistant</span>
+                    <span className="font-medium text-gray-700">Greyhound Assistant</span>
                   </div>
                   <div className="inline-block rounded-lg px-3 py-2 bg-white border border-gray-200 shadow-sm">
                     <div className="flex space-x-2">
