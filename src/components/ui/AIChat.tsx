@@ -2,13 +2,14 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, X, MessageSquare, Loader2, HelpCircle } from 'lucide-react';
+import { Send, X, MessageSquare, Loader2, HelpCircle, ChevronDown, AlertTriangle } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 // Define message type
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  isError?: boolean;
 }
 
 export const AIChat: React.FC = () => {
@@ -21,7 +22,9 @@ export const AIChat: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [userHasScrolled, setUserHasScrolled] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messageAreaRef = useRef<HTMLDivElement>(null);
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -33,6 +36,29 @@ export const AIChat: React.FC = () => {
     }
   }, [messages, isOpen]);
   
+  useEffect(() => {
+    const messageArea = messageAreaRef.current;
+    if (!messageArea) return;
+    
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = messageArea;
+      if (scrollHeight - scrollTop - clientHeight > 30) {
+        setUserHasScrolled(true);
+      } else {
+        setUserHasScrolled(false);
+      }
+    };
+    
+    messageArea.addEventListener('scroll', handleScroll);
+    return () => messageArea.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  useEffect(() => {
+    if (!userHasScrolled || messages[messages.length - 1]?.role === 'user') {
+      scrollToBottom();
+    }
+  }, [messages, userHasScrolled]);
+  
   const handleSendMessage = async () => {
     if (!input.trim() || isLoading) return;
     
@@ -43,6 +69,7 @@ export const AIChat: React.FC = () => {
     setMessages(prevMessages => [...prevMessages, userMessage]);
     setInput('');
     setIsLoading(true);
+    setUserHasScrolled(false);
     
     try {
       // Call our API endpoint
@@ -73,7 +100,8 @@ export const AIChat: React.FC = () => {
         ...prevMessages,
         { 
           role: 'assistant', 
-          content: 'Sorry, I\'m unable to answer your question at the moment. Please try again later.' 
+          content: 'Sorry, I\'m unable to answer your question at the moment. Please try again later.',
+          isError: true
         }
       ]);
     } finally {
@@ -137,7 +165,39 @@ export const AIChat: React.FC = () => {
             </div>
             
             {/* Message Area */}
-            <div className="flex-1 p-4 overflow-y-auto bg-gray-50">
+            <div 
+              ref={messageAreaRef}
+              className="flex-1 p-4 overflow-y-auto bg-gray-50 relative"
+            >
+              {/* 问候消息 */}
+              {messages.length === 0 && (
+                <div className="mb-4 text-center p-4">
+                  <div className="bg-white rounded-lg p-4 shadow-sm inline-block">
+                    <p className="text-gray-700">Hello! I'm the Greyhound Assistant. How can I help you today? Feel free to ask about greyhound care, adoption, or characteristics.</p>
+                  </div>
+                  
+                  {/* 建议问题 */}
+                  <div className="mt-6">
+                    <p className="text-gray-500 mb-2 text-xs font-medium">Try asking:</p>
+                    <div className="space-y-2">
+                      <div onClick={() => setInput("How long do greyhounds live?")} className="cursor-pointer bg-white border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+                        How long do greyhounds live?
+                      </div>
+                      <div onClick={() => setInput("Are greyhounds good with children?")} className="cursor-pointer bg-white border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+                        Are greyhounds good with children?
+                      </div>
+                      <div onClick={() => setInput("What makes greyhounds unique as pets?")} className="cursor-pointer bg-white border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+                        What makes greyhounds unique as pets?
+                      </div>
+                      <div onClick={() => setInput("How much exercise do greyhounds need?")} className="cursor-pointer bg-white border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">
+                        How much exercise do greyhounds need?
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* 消息列表 */}
               {messages.map((message, index) => (
                 <div
                   key={index}
@@ -148,84 +208,72 @@ export const AIChat: React.FC = () => {
                     {message.role === 'user' ? (
                       <span className="font-medium">You</span>
                     ) : (
-                      <span className="font-medium flex items-center">
+                      <span className={`font-medium flex items-center ${isLoading && index === messages.length - 1 ? 'text-green-600 animate-pulse' : ''}`}>
                         <span className="w-2 h-2 bg-green-400 rounded-full mr-1"></span>
                         Greyhound Assistant
                       </span>
                     )}
                   </div>
                   
+                  {/* 消息内容 */}
                   <div
                     className={`inline-block max-w-[75%] rounded-lg px-3 py-2 text-sm ${
                       message.role === 'user'
                         ? 'bg-gray-900 text-white'
-                        : 'bg-white text-gray-800 border border-gray-200 shadow-sm'
+                        : message.isError 
+                          ? 'bg-red-50 text-gray-800 border border-red-200' 
+                          : 'bg-white text-gray-800 border border-gray-200 shadow-sm'
                     }`}
                   >
-                    {message.role === 'user' ? (
-                      message.content
-                    ) : (
-                      <div className="prose prose-sm max-w-none text-gray-800 markdown-content text-sm">
-                        <ReactMarkdown
-                          components={{
-                            // Customize styling for markdown elements
-                            p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                            ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2" {...props} />,
-                            ol: ({node, ...props}) => <ol className="list-decimal pl-4 mb-2" {...props} />,
-                            li: ({node, ...props}) => <li className="mb-1" {...props} />,
-                            strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
-                            em: ({node, ...props}) => <em className="italic" {...props} />,
-                            h1: ({node, ...props}) => <h1 className="text-base font-bold mb-2" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-sm font-bold mb-2" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-xs font-bold mb-1" {...props} />,
-                            a: ({node, ...props}) => <a className="text-gray-600 underline" {...props} />
-                          }}
-                        >
+                    {message.isError && (
+                      <div className="flex items-center text-red-500 text-xs mb-1">
+                        <AlertTriangle size={12} className="mr-1" />
+                        Error
+                      </div>
+                    )}
+                    {message.role === 'assistant' ? (
+                      <div className="prose prose-sm max-w-none">
+                        <ReactMarkdown>
                           {message.content}
                         </ReactMarkdown>
                       </div>
+                    ) : (
+                      message.content
                     )}
                   </div>
                 </div>
               ))}
+              
+              {/* Loading indicator */}
               {isLoading && (
                 <div className="mb-4 text-left">
                   <div className="flex items-center text-xs text-gray-500 mb-1 ml-1">
                     <span className="w-2 h-2 bg-green-400 rounded-full mr-1"></span>
-                    <span className="font-medium text-gray-700">Greyhound Assistant</span>
+                    <span className="font-medium text-green-600 animate-pulse">Greyhound Assistant</span>
                   </div>
-                  <div className="inline-block rounded-lg px-3 py-2 bg-white border border-gray-200 shadow-sm">
-                    <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                  <div className="inline-block max-w-[75%] rounded-lg px-3 py-2 text-sm bg-white text-gray-800 border border-gray-200 shadow-sm">
+                    <div className="flex space-x-1">
+                      <div className="w-1 h-1 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-1 h-1 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-1 h-1 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                     </div>
                   </div>
                 </div>
               )}
+              
+              {/* 滚动到底部的标记 */}
               <div ref={messagesEndRef} />
+              
+              {/* 回到底部按钮 */}
+              {userHasScrolled && messages.length > 2 && (
+                <button 
+                  onClick={scrollToBottom}
+                  className="absolute bottom-4 right-4 bg-gray-900 rounded-full p-2 text-white shadow-lg opacity-80 hover:opacity-100"
+                >
+                  <ChevronDown size={16} />
+                </button>
+              )}
             </div>
-
-            {/* Sample questions */}
-            {messages.length <= 2 && (
-              <div className="bg-gray-100 p-3 border-t border-gray-200">
-                <div className="text-xs text-gray-500 mb-2 flex items-center">
-                  <HelpCircle size={14} className="mr-1" />
-                  <span>Try asking:</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {sampleQuestions.map((question, index) => (
-                    <button 
-                      key={index}
-                      onClick={() => askSampleQuestion(question)}
-                      className="text-xs bg-white text-gray-600 px-2 py-1 rounded-full border border-gray-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-colors"
-                    >
-                      {question}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
             
             {/* Input Area */}
             <div className="p-3 border-t border-gray-200 bg-white">
@@ -235,7 +283,7 @@ export const AIChat: React.FC = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Ask about greyhounds..."
+                  placeholder="Ask about greyhounds... (Enter to send, Shift+Enter for new line)"
                   className="flex-1 p-3 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm"
                   disabled={isLoading}
                 />
