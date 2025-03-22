@@ -48,7 +48,7 @@ export default function GreyhoundTraits() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="h-[160px] md:h-[180px] flex flex-col justify-center">
             <h2 className="text-3xl md:text-4xl font-light flex flex-col gap-2 items-center">
-              <span>People often describe greyhounds as</span>
+              <span className="text-gray-800 font-normal">People often describe greyhounds as</span>
               <span 
                 className="relative"
                 onMouseEnter={() => setIsHovered(true)}

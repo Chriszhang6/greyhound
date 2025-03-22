@@ -43,8 +43,8 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden sm:flex items-center gap-8">
+          {/* Desktop Navigation - 只在>768px屏幕上显示 */}
+          <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/"
               className={cn(
@@ -74,9 +74,9 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - 显示在<=768px屏幕上 */}
           <button
-            className="sm:hidden p-2 rounded-md"
+            className="md:hidden p-2 rounded-md"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -105,10 +105,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - 显示在<=768px屏幕上 */}
       <div
         className={cn(
-          "sm:hidden absolute left-0 right-0 top-16 bg-white shadow-lg transition-all duration-300 overflow-hidden",
+          "md:hidden absolute left-0 right-0 top-16 bg-white shadow-lg transition-all duration-300 overflow-hidden",
           isMobileMenuOpen ? "max-h-48" : "max-h-0"
         )}
       >
