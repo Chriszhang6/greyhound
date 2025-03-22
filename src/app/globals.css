@@ -3,6 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Aurora background variables */
+  --white: rgba(255, 255, 255, 0.2);
+  --black: rgba(0, 0, 0, 0.2);
+  --transparent: transparent;
+  --blue-300: rgba(147, 197, 253, 0.3);
+  --blue-400: rgba(96, 165, 250, 0.3);
+  --blue-500: rgba(59, 130, 246, 0.3);
+  --indigo-300: rgba(165, 180, 252, 0.3);
+  --violet-200: rgba(221, 214, 254, 0.3);
 }
 
 @theme inline {
@@ -23,4 +33,129 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aurora animation */
+@keyframes aurora {
+  0% {
+    background-position: 50% 50%, 50% 50%;
+  }
+  50% {
+    background-position: 0% 100%, 50% 25%;
+  }
+  100% {
+    background-position: 50% 50%, 50% 50%;
+  }
+}
+
+.animate-aurora {
+  animation: aurora 10s ease infinite;
+}
+
+/* Filter for black and white images */
+.grayscale-img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.grayscale-img:hover {
+  filter: grayscale(85%);
+  transform: scale(1.02);
+}
+
+@keyframes run {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes body {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+}
+
+@keyframes head {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes ear {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes tail {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+
+@keyframes leg {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-20deg);
+  }
+}
+
+.animate-run {
+  animation: run 6s infinite linear;
+  transform-origin: center;
+}
+
+.animate-body {
+  animation: body 1.5s infinite ease-in-out;
+  transform-origin: center center;
+}
+
+.animate-head {
+  animation: head 1.2s infinite ease-in-out;
+  transform-origin: center center;
+}
+
+.animate-ear {
+  animation: ear 1s infinite ease-in-out;
+  transform-origin: center center;
+}
+
+.animate-tail {
+  animation: tail 0.8s infinite ease-in-out;
+  transform-origin: center center;
+}
+
+.animate-leg {
+  animation: leg 0.6s infinite ease-in-out;
+  transform-origin: center center;
 }
