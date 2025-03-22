@@ -72,10 +72,10 @@ export default function FosterAdopt() {
         {/* 互动标签页 */}
         <section className="bg-white rounded-lg shadow-sm">
           <div className="border-b border-gray-200">
-            <div className="flex flex-wrap">
+            <div className="grid grid-cols-3">
               <button
                 onClick={() => setActiveTab('adopt')}
-                className={`py-4 px-6 text-lg font-light focus:outline-none ${
+                className={`py-4 text-center text-lg font-light focus:outline-none ${
                   activeTab === 'adopt' ? 'border-b-2 border-gray-900 text-gray-900' : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -83,7 +83,7 @@ export default function FosterAdopt() {
               </button>
               <button
                 onClick={() => setActiveTab('foster')}
-                className={`py-4 px-6 text-lg font-light focus:outline-none ${
+                className={`py-4 text-center text-lg font-light focus:outline-none ${
                   activeTab === 'foster' ? 'border-b-2 border-gray-900 text-gray-900' : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -91,7 +91,7 @@ export default function FosterAdopt() {
               </button>
               <button
                 onClick={() => setActiveTab('organizations')}
-                className={`py-4 px-6 text-lg font-light focus:outline-none ${
+                className={`py-4 text-center text-lg font-light focus:outline-none ${
                   activeTab === 'organizations' ? 'border-b-2 border-gray-900 text-gray-900' : 'text-gray-500 hover:text-gray-700'
                 }`}
               >

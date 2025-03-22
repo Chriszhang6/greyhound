@@ -122,17 +122,13 @@ export const AIChat: React.FC = () => {
             className="absolute bottom-16 right-0 w-80 sm:w-[400px] h-[500px] bg-white rounded-lg shadow-xl flex flex-col overflow-hidden border border-gray-200"
           >
             {/* Chat Title */}
-            <div className="bg-gray-900 text-white p-3 flex justify-between items-center">
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                <h3 className="font-medium text-white">Greyhound Assistant</h3>
-              </div>
+            <div className="flex justify-between items-center p-3 bg-gray-900 rounded-t-lg">
+              <h3 className="font-medium text-white font-semibold text-lg">Greyhound Assistant</h3>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-white"
-                aria-label="Close chat"
+                className="p-1 rounded-md hover:bg-gray-800"
               >
-                <X size={18} />
+                <X className="h-6 w-6 text-gray-400" />
               </button>
             </div>
             
@@ -144,15 +140,14 @@ export const AIChat: React.FC = () => {
                   className={`mb-4 ${message.role === 'user' ? 'text-right' : 'text-left'}`}
                 >
                   {/* 发送者标识 */}
-                  <div className={`flex items-center text-xs text-gray-500 mb-1 ${message.role === 'user' ? 'justify-end mr-1' : 'ml-1'}`}>
-                    {message.role === 'user' ? (
-                      <span className="font-medium">You</span>
-                    ) : (
-                      <span className="font-medium flex items-center">
-                        <span className="w-2 h-2 bg-green-400 rounded-full mr-1"></span>
-                        Greyhound Assistant
+                  <div className="flex items-start gap-2 mb-2">
+                    <div className="h-8 w-8 flex-shrink-0 flex items-center justify-center rounded-full bg-gray-900">
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                       </span>
-                    )}
+                    </div>
+                    <span className="font-medium text-gray-600 flex items-center">Greyhound Assistant</span>
                   </div>
                   
                   <div
