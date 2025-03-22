@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Greyhound Sanctuary",
   description: "Find and adopt retired racing greyhounds",
+  viewport: "width=device-width, initial-scale=1.0",
 };
 
 export default function RootLayout({
