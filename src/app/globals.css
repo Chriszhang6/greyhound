@@ -159,3 +159,25 @@ body {
   animation: leg 0.6s infinite ease-in-out;
   transform-origin: center center;
 }
+
+/* 增强灰色文本对比度 */
+@layer base {
+  :root {
+    --color-gray-500: 80 80 80; /* 更深的灰色 */
+    --color-gray-600: 60 60 60; /* 更深的灰色 */
+  }
+}
+
+/* 确保文本有足够的对比度，特别是在Heroku上 */
+.text-gray-500 {
+  color: rgb(var(--color-gray-500));
+}
+
+.text-gray-600 {
+  color: rgb(var(--color-gray-600));
+}
+
+/* 确保小文本具有足够的可读性 */
+.text-sm {
+  font-weight: 400;
+}

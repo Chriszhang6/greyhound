@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,11 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // 关闭菜单的函数
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header
@@ -37,13 +43,13 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden sm:flex items-center gap-8">
             <Link
               href="/"
               className={cn(
                 "text-sm font-medium hover:opacity-80 transition-opacity",
-                isScrolled ? "text-gray-600 hover:text-gray-900" : "text-white"
+                isScrolled ? "text-gray-700 hover:text-gray-900" : "text-white"
               )}
             >
               Home
@@ -52,7 +58,7 @@ export default function Navbar() {
               href="/about"
               className={cn(
                 "text-sm font-medium hover:opacity-80 transition-opacity",
-                isScrolled ? "text-gray-600 hover:text-gray-900" : "text-white"
+                isScrolled ? "text-gray-700 hover:text-gray-900" : "text-white"
               )}
             >
               About
@@ -61,7 +67,7 @@ export default function Navbar() {
               href="/foster-adopt"
               className={cn(
                 "text-sm font-medium hover:opacity-80 transition-opacity",
-                isScrolled ? "text-gray-600 hover:text-gray-900" : "text-white"
+                isScrolled ? "text-gray-700 hover:text-gray-900" : "text-white"
               )}
             >
               Foster & Adopt
@@ -71,21 +77,63 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             className="sm:hidden p-2 rounded-md"
-            onClick={() => {/* 移动端菜单将在后续实现 */}}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             <div
               className={cn(
-                "w-6 h-0.5 mb-1.5 transition-colors duration-300",
-                isScrolled ? "bg-gray-900" : "bg-white"
+                "w-6 h-0.5 mb-1.5 transition-all duration-300",
+                isScrolled ? "bg-gray-900" : "bg-white",
+                isMobileMenuOpen && "transform rotate-45 translate-y-2"
               )}
             />
             <div
               className={cn(
-                "w-6 h-0.5 transition-colors duration-300",
-                isScrolled ? "bg-gray-900" : "bg-white"
+                "w-6 h-0.5 transition-all duration-300",
+                isScrolled ? "bg-gray-900" : "bg-white",
+                isMobileMenuOpen && "opacity-0"
+              )}
+            />
+            <div
+              className={cn(
+                "w-6 h-0.5 mt-1.5 transition-all duration-300",
+                isScrolled ? "bg-gray-900" : "bg-white",
+                isMobileMenuOpen && "transform -rotate-45 -translate-y-2"
               )}
             />
           </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={cn(
+          "sm:hidden absolute left-0 right-0 top-16 bg-white shadow-lg transition-all duration-300 overflow-hidden",
+          isMobileMenuOpen ? "max-h-48" : "max-h-0"
+        )}
+      >
+        <div className="px-4 py-3">
+          <Link
+            href="/"
+            className="block py-2 text-gray-900 font-medium border-b border-gray-100"
+            onClick={closeMenu}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className="block py-2 text-gray-900 font-medium border-b border-gray-100"
+            onClick={closeMenu}
+          >
+            About
+          </Link>
+          <Link
+            href="/foster-adopt"
+            className="block py-2 text-gray-900 font-medium"
+            onClick={closeMenu}
+          >
+            Foster & Adopt
+          </Link>
         </div>
       </div>
     </header>
