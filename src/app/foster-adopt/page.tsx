@@ -72,7 +72,7 @@ export default function FosterAdopt() {
         {/* 互动标签页 */}
         <section className="bg-white rounded-lg shadow-sm">
           <div className="border-b border-gray-200">
-            <div className="flex">
+            <div className="flex flex-wrap">
               <button
                 onClick={() => setActiveTab('adopt')}
                 className={`py-4 px-6 text-lg font-light focus:outline-none ${
