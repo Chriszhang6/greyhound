@@ -153,7 +153,7 @@ export const AIChat: React.FC = () => {
             <div className="bg-gray-900 text-white p-3 flex justify-between items-center">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                <h3 className="font-bold text-lg tracking-wide" style={{ color: '#ffffff' }}>Greyhound Assistant</h3>
+                <h3 className="font-bold text-lg tracking-wide chat-title">Greyhound Assistant</h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}

@@ -5,7 +5,7 @@
   --foreground: #171717;
   
   /* Aurora background variables */
-  --white: rgba(255, 255, 255, 1);
+  --white: rgba(255, 255, 255,0.2);
   --black: rgba(0, 0, 0, 0.2);
   --transparent: transparent;
   --blue-300: rgba(147, 197, 253, 0.3);
@@ -194,8 +194,13 @@ body {
 }
 
 /* 确保文本更易读 */
-h2, h3, h4 {
+.main-content h2, .main-content h3, .main-content h4 {
   color: rgb(40 40 40);
+}
+
+/* 允许特定区域的标题使用自己的颜色 */
+.chat-title {
+  color: #ffffff !important;
 }
 
 /* 确保小文本具有足够的可读性 */
