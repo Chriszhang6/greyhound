@@ -5,8 +5,7 @@
   --foreground: #171717;
   
   /* Aurora background variables */
-  --white: rgba(255, 255, 255, 0.2); /* 半透明白色用于背景效果 */
-  --white-solid: rgba(255, 255, 255, 1); /* 纯白色用于聊天机器人标题 */
+  --white: rgba(255, 255, 255, 1);
   --black: rgba(0, 0, 0, 0.2);
   --transparent: transparent;
   --blue-300: rgba(147, 197, 253, 0.3);
