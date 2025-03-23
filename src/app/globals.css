@@ -5,7 +5,7 @@
   --foreground: #171717;
   
   /* Aurora background variables */
-  --white: rgba(255, 255, 255,0.2);
+  --white: rgba(255, 255, 255, 1);
   --black: rgba(0, 0, 0, 0.2);
   --transparent: transparent;
   --blue-300: rgba(147, 197, 253, 0.3);
@@ -26,6 +26,13 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    
+    /* 深色模式下提高灰色系对比度 */
+    --color-gray-300: 200 200 200; /* 更亮的灰色 */
+    --color-gray-400: 180 180 180;
+    --color-gray-500: 160 160 160;
+    --color-gray-600: 140 140 140;
+    --color-gray-700: 120 120 120;
   }
 }
 
