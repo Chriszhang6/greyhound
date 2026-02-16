@@ -6,7 +6,7 @@ export default function RunningGreyhound() {
   return (
     <div className="relative w-full h-full">
       <Image
-        src="/greyhound.jpg"
+        src="greyhound.jpg"
         alt="Greyhound"
         fill
         className="object-cover rounded-2xl shadow-2xl"
