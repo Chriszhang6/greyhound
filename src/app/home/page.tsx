@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import RunningGreyhound from "@/components/ui/RunningGreyhound";
 import GreyhoundTraits from "@/components/ui/GreyhoundTraits";
 import RacingGreyhoundInfo from '@/components/ui/RacingGreyhoundInfo';
@@ -23,18 +24,18 @@ export default function Home() {
                 These gentle souls make wonderful companions.
               </p>
               <div className="flex gap-4">
-                <a
+                <Link
                   href="/about"
                   className="px-6 py-2 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   Learn More
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/foster-adopt"
                   className="px-6 py-2 border-2 border-white text-white rounded-lg hover:bg-white/20 transition-colors"
                 >
                   Foster & Adopt
-                </a>
+                </Link>
               </div>
             </div>
             <div className="hidden md:block h-[300px]">
