@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
 import { StaticFAQ } from '@/components/ui/StaticFAQ';
 
 // 互动问答组件
@@ -153,7 +151,7 @@ export default function FosterAdopt() {
                 className="space-y-6"
               >
                 <p className="text-gray-600 leading-relaxed mb-6">
-                  Fostering a greyhound is a rewarding experience that helps prepare these gentle dogs for their forever homes. As a foster carer, you'll provide temporary care and help them transition from racing life to family life.
+                  Fostering a greyhound is a rewarding experience that helps prepare these gentle dogs for their forever homes. As a foster carer, you&apos;ll provide temporary care and help them transition from racing life to family life.
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-8">
@@ -202,7 +200,7 @@ export default function FosterAdopt() {
                         >
                           Greyhound Adoption Program (GAP)
                         </a>
-                        <p className="text-sm text-gray-500 mt-1">Victoria's largest greyhound adoption program</p>
+                        <p className="text-sm text-gray-500 mt-1">Victoria&apos;s largest greyhound adoption program</p>
                       </li>
                       <li>
                         <a
@@ -265,7 +263,7 @@ export default function FosterAdopt() {
         <section className="text-center bg-gray-50 p-8 rounded-lg">
           <h2 className="text-2xl font-light text-gray-900 mb-4">Ready to Make a Difference?</h2>
           <p className="text-gray-600 leading-relaxed mb-6 max-w-2xl mx-auto">
-            Whether you're interested in fostering or adopting, there's a greyhound waiting for you. Contact one of our partner organizations to start your journey.
+            Whether you&apos;re interested in fostering or adopting, there&apos;s a greyhound waiting for you. Contact one of our partner organizations to start your journey.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

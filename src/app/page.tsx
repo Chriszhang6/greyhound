@@ -41,7 +41,7 @@ const jamiePhotos = [
 
 export default function TributePage() {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDragging] = useState(false);
   
   return (
     <div className="relative min-h-screen bg-white text-gray-900 overflow-hidden">

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const pathname = usePathname();

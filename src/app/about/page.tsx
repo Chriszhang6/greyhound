@@ -118,7 +118,7 @@ export default function About() {
               Greyhounds have a rich history dating back over 4,000 years, making them one of the oldest dog breeds in existence. Originally bred in ancient Egypt and later cherished by nobility across Europe, these elegant dogs have evolved from hunting companions to beloved family pets.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Today's retired racing greyhounds represent a unique opportunity to welcome a piece of living history into your home, transformed from athletic performers to gentle household companions.
+              Today&apos;s retired racing greyhounds represent a unique opportunity to welcome a piece of living history into your home, transformed from athletic performers to gentle household companions.
             </p>
             <div className="mt-4 bg-gray-50 p-4 rounded-lg mx-6 mb-6">
               <p className="text-sm italic text-gray-500">💡 <strong>Fun fact:</strong> Greyhounds are the only dog breed mentioned in the Bible!</p>
@@ -198,7 +198,7 @@ export default function About() {
                   <div className="flex items-start mb-4">
                     <span className="text-3xl mr-3 mt-1">🧸</span>
                     <p className="text-gray-600">
-                      <strong className="text-gray-900">Gentle and calm:</strong> Greyhounds are known for their sweet, mild temperament. They're typically relaxed and easygoing, making them excellent companions.
+                      <strong className="text-gray-900">Gentle and calm:</strong> Greyhounds are known for their sweet, mild temperament. They&apos;re typically relaxed and easygoing, making them excellent companions.
                     </p>
                   </div>
                   <div className="flex items-start mb-4">
@@ -210,7 +210,7 @@ export default function About() {
                   <div className="flex items-start mb-4">
                     <span className="text-3xl mr-3 mt-1">🧠</span>
                     <p className="text-gray-600">
-                      <strong className="text-gray-900">Sensitive and intelligent:</strong> These dogs are quite smart and pick up on their owners' emotions. They respond best to gentle, positive training methods.
+                      <strong className="text-gray-900">Sensitive and intelligent:</strong> These dogs are quite smart and pick up on their owners&apos; emotions. They respond best to gentle, positive training methods.
                     </p>
                   </div>
                 </motion.div>
@@ -257,7 +257,7 @@ export default function About() {
                   <span className="text-xl mr-2">🏃‍♀️</span> Exercise Needs
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Despite their racing background, greyhounds are often referred to as "40-mph couch potatoes." They typically need:
+                  Despite their racing background, greyhounds are often referred to as &quot;40-mph couch potatoes.&quot; They typically need:
                 </p>
                 <ul className="list-disc list-inside text-gray-600 mt-2 space-y-2">
                   <li>Two 20-minute walks daily</li>
@@ -375,7 +375,7 @@ export default function About() {
             <span className="text-3xl mr-2">🏡</span> Ready to Welcome a Greyhound?
           </h2>
           <p className="text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
-            If you're inspired by these gentle giants and their remarkable qualities, consider giving a retired racing greyhound their forever home. These dogs have so much love to give and are waiting for families like yours.
+            If you&apos;re inspired by these gentle giants and their remarkable qualities, consider giving a retired racing greyhound their forever home. These dogs have so much love to give and are waiting for families like yours.
           </p>
           <a
             href="/foster-adopt"

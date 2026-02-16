@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import RunningGreyhound from "@/components/ui/RunningGreyhound";
 import GreyhoundTraits from "@/components/ui/GreyhoundTraits";
 import RacingGreyhoundInfo from '@/components/ui/RacingGreyhoundInfo';

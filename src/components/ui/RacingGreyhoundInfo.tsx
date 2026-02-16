@@ -217,7 +217,7 @@ export default function RacingGreyhoundInfo() {
         
         {/* Navigation Dots (Mobile and Desktop) */}
         <div className="flex justify-center mt-6 gap-2">
-          {timelineStages.map((stage, index) => (
+          {timelineStages.map((stage) => (
             <button
               key={stage.id}
               onClick={() => handleStageClick(stage.id)}
