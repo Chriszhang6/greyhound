@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { AIChat } from '@/components/ui/AIChat';
+import { StaticFAQ } from '@/components/ui/StaticFAQ';
 
 // 互动问答组件
 const FaqAccordion = ({ question, answer }: { question: string; answer: string }) => {
@@ -296,8 +296,8 @@ export default function FosterAdopt() {
         </section>
       </div>
 
-      {/* AI聊天组件 */}
-      <AIChat />
+      {/* FAQ组件 */}
+      <StaticFAQ />
     </div>
   );
 } 

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AIChat } from '@/components/ui/AIChat';
+import { StaticFAQ } from '@/components/ui/StaticFAQ';
 
 // 手风琴组件
 interface AccordionItemProps {
@@ -386,8 +386,8 @@ export default function About() {
         </section>
       </div>
 
-      {/* AI聊天组件 */}
-      <AIChat />
+      {/* FAQ组件 */}
+      <StaticFAQ />
     </div>
   );
 } 

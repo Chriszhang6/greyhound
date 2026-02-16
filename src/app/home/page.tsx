@@ -5,7 +5,7 @@ import RunningGreyhound from "@/components/ui/RunningGreyhound";
 import GreyhoundTraits from "@/components/ui/GreyhoundTraits";
 import RacingGreyhoundInfo from '@/components/ui/RacingGreyhoundInfo';
 import FosterAdopt from '@/components/ui/FosterAdopt';
-import { AIChat } from '@/components/ui/AIChat';
+import { StaticFAQ } from '@/components/ui/StaticFAQ';
 
 export default function Home() {
   return (
@@ -54,8 +54,8 @@ export default function Home() {
       {/* Foster & Adopt Section */}
       <FosterAdopt />
       
-      {/* AI Chat Component */}
-      <AIChat />
+      {/* FAQ Component */}
+      <StaticFAQ />
     </main>
   );
 } 
