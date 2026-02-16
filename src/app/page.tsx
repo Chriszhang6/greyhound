@@ -9,32 +9,32 @@ import Image from 'next/image';
 const jamiePhotos = [
   {
     id: 1,
-    url: '/IMG_0618.jpeg',
+    url: 'IMG_0618.jpeg',
     aspectRatio: '1/1.5', // 长方形照片
   },
   {
     id: 2,
-    url: '/IMG_0624.jpeg',
+    url: 'IMG_0624.jpeg',
     aspectRatio: '3/2', // 横向照片
   },
   {
     id: 3,
-    url: '/IMG_1394.jpeg',
+    url: 'IMG_1394.jpeg',
     aspectRatio: '1/1.5', // 长方形照片
   },
   {
     id: 4,
-    url: '/IMG_1543.jpeg',
+    url: 'IMG_1543.jpeg',
     aspectRatio: '1/1.5', // 长方形照片
   },
   {
     id: 5,
-    url: '/IMG_0795.JPG',
+    url: 'IMG_0795.JPG',
     aspectRatio: '3/2', // 横向照片
   },
   {
     id: 6,
-    url: '/IMG_0819.JPG',
+    url: 'IMG_0819.JPG',
     aspectRatio: '1/1.5', // 长方形照片
   }
 ];
