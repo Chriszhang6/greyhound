@@ -2,38 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   // 检查是否为活动路径
   const isActive = (path: string) => {
     return pathname === path;
   };
-
-  useEffect(() => {
-    // 添加移动设备的检测逻辑
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-
-    // 初始检查
-    checkIfMobile();
-
-    // 窗口大小变化处理
-    const handleResize = () => {
-      checkIfMobile();
-    };
-
-    window.addEventListener("resize", handleResize);
-    
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   // 关闭菜单的函数
   const closeMenu = () => {
