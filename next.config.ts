@@ -9,8 +9,8 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  // 如果仓库名不是 username.github.io，需要设置 basePath
-  // basePath: '/your-repo-name',
+  // 仓库名是 greyhound，需要设置 basePath
+  basePath: '/greyhound',
 
   // 确保路由正常工作
   trailingSlash: true,
